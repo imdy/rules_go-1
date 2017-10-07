@@ -52,7 +52,7 @@ def _go_repository_impl(ctx):
             '--vcs', ctx.attr.vcs,
             '--importpath', ctx.attr.importpath,
         ],
-        environment = {"PATH": ctx.os.environ["PATH"]},  # to find git
+        environment = {"PATH": ctx.os.environ["PATH"], "HOME": ctx.os.environ["HOME"]},  # to find git
     )
     if result.return_code:
       fail("failed to fetch %s: %s" % (ctx.name, result.stderr))
